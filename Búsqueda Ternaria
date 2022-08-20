@@ -1,1 +1,45 @@
+def tS(l, r, k, ar):
+    while r >= l:
+         
+        
+        a1 = l + (r-l) // 3
+        a2 = r - (r-l) // 3
+ 
+        
+        if k == ar[a1]:
+            return a1
+        if k == a2:
+            return a2
+ 
+        
+        if k < ar[a1]:
+           
+            r = a1 - 1
+        elif k > ar[a2]:
+            
+            l = a2 + 1
+        else:
+            
+            l = a1 + 1
+            r = a2 - 1
+ 
 
+    return -1
+ 
+
+ar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+l = 0
+r = 9
+k = 5
+
+x = int(input("Ingrese el numero a buscar")) 
+p = tS(l, r, x, ar)
+
+print("El numero", x, "se encontro en la posicion", p)
+ 
+
+x = int(input("Ingrese el numero a buscar")) 
+
+p = tS(l, r, x, ar)
+
+print("Numero no encontrado")
