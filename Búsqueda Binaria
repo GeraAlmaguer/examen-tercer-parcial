@@ -1,0 +1,24 @@
+def bS(arr, x, n):
+    l = 0
+    h = n - 1
+    m = 0
+
+    while l <= h:
+        m = (h + l) // 2
+        if arr[m] < x:
+            l = m + 1
+        elif arr[m] > x:
+            h = m - 1
+        else:
+            return m
+    return -1
+    
+arr = [ 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23 ]
+x = int(input("Ingrese el numero a buscar "))
+n = len(arr)
+res = bS(arr, x ,n)
+
+if res == -1:
+    print("El valor buscado",x, "no fue localizado en el arreglo de",res, "posiciones")
+else:
+    print("El valor buscado",x, "se encuentra en la posicion del indice",res)
