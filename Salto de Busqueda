@@ -1,1 +1,36 @@
-sa
+from typing import Counter
+import math
+  
+def jS( arr , x , n ):
+    s = math.sqrt(n)
+    p = 0
+    c = 0
+    while arr[int(min(s, n)-1)] < x:
+        p = s
+        s += math.sqrt(n)
+        c = c + 1
+        if p >= n:
+            return -1,c
+
+    while arr[int(p)] < x:
+        p += 1
+        c = c + 1
+
+        if p == min(s, n):
+            return -1,c
+      
+    if arr[int(p)] == x:
+        return p,c
+      
+      
+    return -1,c
+
+x = int(input("Ingrese el numero a buscar"))  
+arr = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610 ]
+n = len(arr)
+c = 0
+i,c = jS(arr, x, n)
+if i == -1:
+  print("Se realizaron", c , "saltos para buscar el numero", x, "en el arreglo de longitud", i, ",pero no fue encontrado")
+else:
+  print("El numero",x, "se encontro en la posicion" ,i, "con", c, "saltos de busqueda")
